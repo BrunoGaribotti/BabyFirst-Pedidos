@@ -43,6 +43,11 @@ namespace Sincro_Pedidos_Manual
 
         }
 
+        /// <summary>
+        /// Crea los archivos maestros y los sube al cliente.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void sincronizacionConMaestrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textBox1.Enabled = false;

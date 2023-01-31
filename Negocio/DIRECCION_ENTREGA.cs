@@ -6,6 +6,9 @@ using System.Data;
 
 namespace Negocio
 {
+    /// <summary>
+    /// Objeto de Dirección de entrega - tabla DIRECCION_ENTREGA
+    /// </summary>
     public class DIRECCION_ENTREGA
     {
         public string ID_DIRECCION_ENTREGA = "";

@@ -11,6 +11,10 @@ namespace Negocio
         public string empresa1 = "BF";
         public string empresa2 = "BF";
 
+        /// <summary>
+        /// Busca la información de los clientes en la EmpresaA.
+        /// </summary>
+        /// <returns>Devuelve los resultados</returns>
         public string Clientes()
         {
             string sql = @"
@@ -36,6 +40,10 @@ namespace Negocio
             return sql;
         }
 
+        /// <summary>
+        /// Busca la información de los domicilios de los clientes en la EmpresaA.
+        /// </summary>
+        /// <returns>Devuelve los resultados</returns>
         internal string Clientes_Domicilios()
         {
             string sql = @"SELECT 
@@ -55,7 +63,11 @@ namespace Negocio
 
             return sql;
         }
-        
+
+        /// <summary>
+        /// Busca la información de las listas de precios en la EmpresaA y EmpresaB.
+        /// </summary>
+        /// <returns>Devuelve los resultados</returns>
         internal string Precios()
         {
             string sql = @"SELECT 
@@ -153,7 +165,11 @@ namespace Negocio
 
             return sql;
         }
-        
+
+        /// <summary>
+        /// Busca la información de los vendedoresa en la EmpresaA.
+        /// </summary>
+        /// <returns>Devuelve los resultados</returns>
         internal string Vendedores()
         {
             string sql = @"SELECT 
@@ -165,6 +181,10 @@ namespace Negocio
             return sql;
         }
 
+        /// <summary>
+        /// Busca la información de las Zonas de entrega en la EmpresaA y EmpresaB.
+        /// </summary>
+        /// <returns>Devuelve los resultados</returns>
         internal string Zonas()
         {
             string sql = @"SELECT 

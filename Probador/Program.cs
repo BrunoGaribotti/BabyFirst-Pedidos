@@ -8,6 +8,10 @@ namespace Probador
 {
     class Program
     {
+        /// <summary>
+        /// Clase para probar el servicio.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             SrvBabyFirst SrvBF = new SrvBabyFirst();

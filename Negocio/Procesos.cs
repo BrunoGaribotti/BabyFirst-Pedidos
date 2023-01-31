@@ -39,6 +39,10 @@ namespace Negocio
 
         string urlFtp = "";
 
+        /// <summary>
+        /// Carga la información de las empresas desde EMPRESAS.XML en la carpeta CONFIG.
+        /// </summary>
+        /// <returns></returns>
         public string CargarEmpresas()
         {
             string ret = "";
@@ -64,6 +68,9 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Carga los datos de configuración del email desde MAIL.XML
+        /// </summary>
         public string CargarConfigMail()
         {
             string ret = "";
@@ -88,6 +95,10 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Carga la configuración de la conección al FTP desde FTP.XML
+        /// </summary>
+        /// <returns></returns>
         public string CargarConfigFTP()
         {
             string ret = "";
@@ -107,6 +118,10 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Obtiene la configurción desde el archivo CONFIG.XML
+        /// </summary>
+        /// <returns></returns>
         public string CargarConfig()
         {
             string ret = "";
@@ -131,6 +146,11 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Comprueba si existe el pedido segúin el NRO_PEDIDO (GVA21)
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         private bool ExistePedido(string p)
         {
             bool existe = false;
@@ -147,6 +167,11 @@ namespace Negocio
             return existe;
         }
 
+        /// <summary>
+        /// Comprueba si existe la empresa según el IDEmpresa, desde la tabla EMPRESA.
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private bool ExisteEmpresa(string empresa)
         {
             bool existe = false;
@@ -168,6 +193,12 @@ namespace Negocio
             return existe;
         }
 
+        /// <summary>
+        /// Comprueba si existe el artículo según COD_ARTICU, en la tabla STA11.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private bool ExisteArticulo(string p,string empresa)
         {
             bool existe = false;
@@ -184,6 +215,12 @@ namespace Negocio
             return existe;
         }
 
+        /// <summary>
+        /// Comprueba si existe el artículo en la empresa G360.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         //(B)
         private bool ExisteArticuloInG(string p, string empresa)
         {
@@ -211,7 +248,13 @@ namespace Negocio
             db.Conectar();
         }
 
-        public  string Procesar()
+        /// <summary>
+        /// Carga los pedidos en las BD.
+        /// <para>Procesa los archivos de la carpeta IN y los correctamente exportados pasan a la carpeta OUT.</para>
+        /// <para>Genera una copia de respaldo en las carpetas ZZ_IN_COPY y ZZ_OUT_COPY</para>
+        /// </summary>
+        /// <returns></returns>
+        public string Procesar()
         {
             string log = "";
             DirectoryInfo di = new DirectoryInfo(Procesos.Carpeta + "\\IN\\");
@@ -338,7 +381,11 @@ namespace Negocio
             return log;
         }
 
-
+        /// <summary>
+        /// Guarda le archivo generado.
+        /// </summary>
+        /// <param name="ArchDest"></param>
+        /// <param name="lineas"></param>
         public void GuardarArchivo(string ArchDest,List<String[]> lineas)
         {
             StreamWriter writer = new StreamWriter(ArchDest, false);
@@ -361,6 +408,11 @@ namespace Negocio
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Carga toda la información de los pedidos de BabyFirst.
+        /// </summary>
+        /// <param name="lineas"></param>
+        /// <returns>Devuelve un array de string con las lineas que van en el archivo.</returns>
         private PedidoBf CargarPedidos(List<string> lineas)
         {
             bool agregar = true;
@@ -528,6 +580,11 @@ namespace Negocio
             return pedBf;
         }
 
+        /// <summary>
+        /// Trae la inicial de la empresa por cada empresa (A y B).
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         private string TraerInicial(string p)
         {
             string ret = "";
@@ -541,6 +598,12 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Devuelve la leyenda de la empresa.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="p_2"></param>
+        /// <returns></returns>
         private string TraerLeyenda(int p, string p_2)
         {
             string ret = "";
@@ -562,6 +625,11 @@ namespace Negocio
             return ret;
         }
    
+        /// <summary>
+        /// Trae los datos del asiento modelo según la empresa - tabla ASIENTO_MODELO
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private string TraerAsientoModelo(string empresa)
         {
             string ret = "null";
@@ -583,6 +651,13 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Trae las listas de precios según la empresa, nro de lista y cod de artículo.
+        /// </summary>
+        /// <param name="lista"></param>
+        /// <param name="articulo"></param>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private decimal TraerPrecio(string lista, string articulo,string empresa)
         {
             decimal ret = 0;
@@ -602,6 +677,11 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Trae los datos de la empresa.
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private string TraerEmpresa(string empresa)
         {
             string ret = "";
@@ -615,6 +695,12 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Trae la dirección de entrega desde DIRECCION_ENTREGA
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private string TraerDireccionEntrega(string cliente,string empresa)
         {
             string ret = "null";
@@ -636,6 +722,13 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Trae la unidad de medida desde STA11.
+        /// </summary>
+        /// <param name="campo"></param>
+        /// <param name="cod_articu"></param>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private string TraerUnidadMedida(string campo,string cod_articu, string empresa)
         {
             string ret = "null";
@@ -655,6 +748,12 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Chequea si existe el cliente del pedido.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         private HClient ExisteCliente(string p, string empresa)
         {
             HClient client = new HClient();
@@ -702,6 +801,9 @@ namespace Negocio
             return client;
         }
 
+        /// <summary>
+        /// Elimina pedidos con errores que no fueron procesados.
+        /// </summary>
         public void EliminarPedidoAveriado()
         {
             Ftp ftp = new Ftp(urlFtp + "pendientes", userFTP, passFTP);
@@ -761,6 +863,11 @@ namespace Negocio
             }
         }
 
+        /// <summary>
+        /// Sube los archivos procesados al FTP. En el log anota los errores.
+        /// </summary>
+        /// <param name="destino"></param>
+        /// <param name="local"></param>
         private void SubirArchivos(string destino,string local)
         {
             try
@@ -775,6 +882,12 @@ namespace Negocio
                 grabarLog("Error " + local + "  - " + ex.Message.ToString());
             }
         }
+
+        /// <summary>
+        /// Sube al FTP los archivos Maestros. En el log anota los errores.
+        /// </summary>
+        /// <param name="destino"></param>
+        /// <param name="local"></param>
         private void SubirArchivosMaestros(string destino, string local)
         {
             try
@@ -791,6 +904,13 @@ namespace Negocio
             }
         }
 
+        /// <summary>
+        /// Lista el directorio del FTP.
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <param name="user"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
         static List<string> listarFTP(string dir, string user, string pass)
         {
             FtpWebRequest dirFtp = ((FtpWebRequest)FtpWebRequest.Create(dir));
@@ -831,6 +951,11 @@ namespace Negocio
             
             return archivos;
         }
+
+        /// <summary>
+        /// Envía el email según los datos de configuración. 
+        /// </summary>
+        /// <param name="mensaje"></param>
         public void MandarMail(string mensaje)
         {
             try
@@ -891,6 +1016,10 @@ namespace Negocio
 
         }
 
+        /// <summary>
+        /// Guarda datos en el archivo log.txt
+        /// </summary>
+        /// <param name="mensaje"></param>
         public void grabarLog(string mensaje)
         {
             string line = DateTime.Now.ToString("dd - MMM - yyy hh:mm:ss");
@@ -904,6 +1033,9 @@ namespace Negocio
             sr.Close();
         }
 
+        /// <summary>
+        /// Sube al FTP los archivos que quedaron pendientes.
+        /// </summary>
         public void SubirPendientes()
         {
             DirectoryInfo di = new DirectoryInfo(Procesos.Carpeta + "\\OUT\\");
@@ -948,6 +1080,11 @@ namespace Negocio
             return true;
         }
 
+        /// <summary>
+        /// Crea el archivo según el formato pactado con el cliente.
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public string CrearArchivo(DataTable dt)
         {
             string ret = "";
@@ -998,6 +1135,10 @@ namespace Negocio
             return ret;
         }
 
+        /// <summary>
+        /// Crea los archivos Maestros.
+        /// </summary>
+        /// <returns></returns>
         public string CrearMaestros()
         {
             string asd = "";

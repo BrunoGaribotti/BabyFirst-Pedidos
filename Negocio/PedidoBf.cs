@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Negocio
 {
+    /// <summary>
+    /// Objeto que contiene los datos del pedido de BabyFirst
+    /// </summary>
     public class PedidoBf
     {
         public bool error = false;

@@ -6,6 +6,9 @@ using System.Data;
 
 namespace Negocio
 {
+    /// <summary>
+    /// Objeto que contiene el encabezado del pedido - GVA21
+    /// </summary>
     public class GVA21
     {
         public string Empresa = "";

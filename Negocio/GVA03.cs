@@ -6,6 +6,9 @@ using System.Data;
 
 namespace Negocio
 {
+    /// <summary>
+    /// Objeto que contiene los renglones del pedido - GVA03
+    /// </summary>
     public class GVA03
     {
         public string ID_GVA03 = "";
